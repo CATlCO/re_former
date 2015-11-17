@@ -1,0 +1,41 @@
+<h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>
+
+<!-- <form action = '/users' method = 'post' accept-charset="UTF-8">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<label for = 'username'>Username:</label> 
+	<input type = 'text' name = 'user[username]'><br>
+	<label for = 'email'>Email:</label>
+  <input type = 'email' name = 'user[email]'><br>
+	<label for = 'password'>Password:</label>
+  <input type = 'password' name = 'user[password]'><br>
+	<input type = 'submit' value = 'Submit'>
+</form> -->
+
+<!-- <%= form_tag('/users') do %>
+	<%= label_tag 'username', 'Username:' %>
+	<%= text_field_tag 'user[username]' %><br>
+	<%= label_tag 'email', 'Email:' %>
+	<%= email_field_tag 'user[email]' %><br>
+	<%= label_tag 'password', 'Password:' %>
+	<%= password_field_tag 'user[password]' %><br>
+	<%= submit_tag 'Submit' %>
+<% end %> -->
+
+<ul>
+	<%  if @user.errors.any? %>
+		<% @user.errors.full_messages.each do |error| %>
+			<li><%=  error %></li>
+		<% end %>
+	<% end %>
+</ul>
+
+<%= form_for @user do |f| %>
+	<%= f.label :username %> 
+	<%= f.text_field :username %><br>
+	<%= f.label :email %>
+	<%= f.email_field :email, value: "example@example.com" %><br>
+	<%= f.label :password %>
+	<%= f.password_field :password %><br>
+	<%= f.submit 'Submit' %>
+<% end %>
